@@ -51,10 +51,19 @@ function App() {
   let total = 0;
   let totalQuantity = 0
   let totalBase = 0;
+
+  const knpPrice = Math.round(price * 0.9829) - Math.round(price * 0.9829) % 1000 
+  const myNghePrice =  Math.round(price * 1.0071) - Math.round(price * 1.0071) % 1000
   for (const data of table){
     totalQuantity += data.quantity
     totalBase += (data.base_price * data.quantity)
-    total += (data.quantity * price)
+    if (data.brand == "KNP"){
+      total += knpPrice * data.quantity
+    } else if (data.brand == "KNP My Nghe"){
+      total += myNghePrice * data.quantity
+    } else{
+      total += (data.quantity * price)
+    }
   }
 
   
@@ -154,8 +163,9 @@ function App() {
             setEditForm={setEditForm}
             saveEdit={() => saveEdit(item.id)}
             cancelEdit={() => setEditId(null)}
-            delItem={() => deleteItem(item.id)}/>
-            
+            delItem={() => deleteItem(item.id)}
+            knpPrice={knpPrice}
+            myNghePrice={myNghePrice}/>
             )}
         </tbody>
         <tfoot>

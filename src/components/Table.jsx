@@ -8,9 +8,18 @@ function Table({
   editForm,
   setEditForm,
   saveEdit,
-  cancelEdit
+  cancelEdit,
+  knpPrice,
+  myNghePrice
   }){
-    const currentPrice = item.brand === "KNP" ? Math.round(price * 0.97) : price
+    let currentPrice;
+    if (item.brand === "KNP"){
+      currentPrice = knpPrice
+    } else if (item.brand == "KNP My Nghe"){
+      currentPrice = myNghePrice
+    } else{
+      currentPrice = price
+    }
     const profit = (currentPrice * item.quantity) - (item.base_price * item.quantity)
     const currentValue = currentPrice * item.quantity
   return (
