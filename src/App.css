@@ -1,0 +1,69 @@
+.container{
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: 
+rgb(66, 66, 66);
+  color: white;
+  font-weight: bold;
+}
+
+th,
+td{
+  border: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container div{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container button{
+  border: 3px black dotted;
+}
+
+@media (max-width: 500px){
+
+  .container{
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 90%;
+  }
+
+   thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: 12px;
+  }
+}
